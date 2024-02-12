@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include <fstream>
 
 using namespace std;
 
@@ -27,7 +26,6 @@ void clasificarCacao(float, float, float, float, float);
 void clasificarArroz(float, float, float, float, float);
 void mostrarInventarioCacao(const vector<PlantacionCacao>& plantacionesCacao);
 void mostrarInventarioArroz(const vector<PlantacionArroz>& plantacionesArroz);
-void guardarInventario(const vector<PlantacionCacao>& plantacionesCacao, const vector<PlantacionArroz>& plantacionesArroz);
 
 
 int main() {
