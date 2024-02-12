@@ -42,18 +42,18 @@ int main() {
         cout << "|| SISTEMA DE CLASIFICACION DE SUELOS PARA EL MANEJO DE SUELOS || " << endl;
         cout << endl;
         cout << "            || OPCIONES ||                " << endl;
-        cout << "(1) Manejo de Cultivos \n(2) Inventario de Cultivos \n(3) Salir\n";
+        cout << "(1) Plantacion de Cultivos \n(2) Inventario de Cultivos \n(3) Salir\n";
         cin >> opcion;
         int opcionManejo = 0;
 
         switch (opcion) {
             case 1:
-                cout << "        || MANEJO DE CULTIVOS ||                " << endl;
-                cout << "(1) Manejo de Cacao\n(2) Manejo de Arroz\n";
+                cout << "        || PLANTACION DE CULTIVOS ||                " << endl;
+                cout << "(1) Plantacion de Cacao\n(2) Plantacion de Arroz\n";
                 cin >> opcionManejo;
                 switch (opcionManejo) {
                     case 1:
-                        cout << "   || BIENVENIDO AL MANEJO DE CACAO || " << endl;
+                        cout << "   || PLANTACION DEL CACAO || " << endl;
                         cout << " Por favor ingrese la cantidad de muestras: "; 
                         cin >> muestras;
                         for (int i = 0; i < muestras; i++) {
@@ -62,7 +62,7 @@ int main() {
                         }
                         break;
                     case 2:
-                        cout << "   || BIENVENIDO AL MANEJO DE ARROZ || " << endl;
+                        cout << "   || PLANTACION DEL ARROZ || " << endl;
                         cout << " Por favor ingrese la cantidad de muestras: "; 
                         cin >> muestras;
                         for (int i = 0; i < muestras; i++) {
