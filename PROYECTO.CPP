@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ void clasificarCacao(float, float, float, float, float);
 void clasificarArroz(float, float, float, float, float);
 void mostrarInventarioCacao(const vector<PlantacionCacao>& plantacionesCacao);
 void mostrarInventarioArroz(const vector<PlantacionArroz>& plantacionesArroz);
+void guardarInventario(const vector<PlantacionCacao>& plantacionesCacao, const vector<PlantacionArroz>& plantacionesArroz);
 
 
 int main() {
@@ -42,18 +44,18 @@ int main() {
         cout << "|| SISTEMA DE CLASIFICACION DE SUELOS PARA EL MANEJO DE SUELOS || " << endl;
         cout << endl;
         cout << "            || OPCIONES ||                " << endl;
-        cout << "(1) Plantacion de Cultivos \n(2) Inventario de Cultivos \n(3) Salir\n";
+        cout << "(1) Manejo de Cultivos \n(2) Inventario de Cultivos \n(3) Salir\n";
         cin >> opcion;
         int opcionManejo = 0;
 
         switch (opcion) {
             case 1:
-                cout << "        || PLANTACION DE CULTIVOS ||                " << endl;
-                cout << "(1) Plantacion de Cacao\n(2) Plantacion de Arroz\n";
+                cout << "        || MANEJO DE CULTIVOS ||                " << endl;
+                cout << "(1) Manejo de Cacao\n(2) Manejo de Arroz\n";
                 cin >> opcionManejo;
                 switch (opcionManejo) {
                     case 1:
-                        cout << "   || PLANTACION DEL CACAO || " << endl;
+                        cout << "   || BIENVENIDO AL MANEJO DE CACAO || " << endl;
                         cout << " Por favor ingrese la cantidad de muestras: "; 
                         cin >> muestras;
                         for (int i = 0; i < muestras; i++) {
@@ -62,7 +64,7 @@ int main() {
                         }
                         break;
                     case 2:
-                        cout << "   || PLANTACION DEL ARROZ || " << endl;
+                        cout << "   || BIENVENIDO AL MANEJO DE ARROZ || " << endl;
                         cout << " Por favor ingrese la cantidad de muestras: "; 
                         cin >> muestras;
                         for (int i = 0; i < muestras; i++) {
@@ -78,6 +80,7 @@ int main() {
                 mostrarInventarioCacao(inventarioCacao);
                 cout << endl << "Arroz:" << endl;
                 mostrarInventarioArroz(inventarioArroz);
+                guardarInventario(inventarioCacao, inventarioArroz); 
                 break;
             case 3:
                 cout << "Saliendo del programa..." << endl;
@@ -165,4 +168,26 @@ void mostrarInventarioArroz(const vector<PlantacionArroz>& plantacionesArroz) {
              << setw(34) << left << plantacion.produccionAnual << " |" << endl;
     }
     cout << "===============================================================================" << endl;
+}
+
+void guardarInventario(const vector<PlantacionCacao>& plantacionesCacao, const vector<PlantacionArroz>& plantacionesArroz) {
+    ofstream archivo("inventario.txt");
+    
+    if (archivo.is_open()) {
+        archivo << "Inventario de plantaciones de cacao:" << endl;
+        for (const auto& plantacion : plantacionesCacao) {
+            archivo << "Nombre: " << plantacion.nombre << ", Área: " << plantacion.area << " hectáreas, Edad: " << plantacion.edad << " años, Producción Anual: " << plantacion.produccionAnual << " toneladas." << endl;
+        }
+        archivo << endl;
+
+        archivo << "Inventario de plantaciones de arroz:" << endl;
+        for (const auto& plantacion : plantacionesArroz) {
+            archivo << "Nombre: " << plantacion.nombre << ", Área: " << plantacion.area << " hectáreas, Edad: " << plantacion.edad << " años, Producción Anual: " << plantacion.produccionAnual << " toneladas." << endl;
+        }
+
+        archivo.close();
+        cout << "Inventario guardado correctamente en 'inventario.txt'" << endl;
+    } else {
+        cout << "No se pudo abrir el archivo para guardar el inventario." << endl;
+    }
 }
