@@ -1,0 +1,4 @@
+Inventario de plantaciones de cacao:
+Nombre: Cacao, Área: 22 hectáreas, Edad: 2 años, Producción Anual: 22 toneladas.
+
+Inventario de plantaciones de arroz:
